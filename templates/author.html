@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+    作者：{{ a.name }}
+    出版量：{{ a.article_set.count}}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="con_content">
+    <div class="about_box">
+      <h2 class="nh1"><span>您现在的位置是：<a href="/" target="_blank">网站首页</a>>><a href="#" target="_blank">个人日记</a></span><b>个人日记</b></h2>
+      <div class="dtxw box">
+        {% for a in page_obj %}
+        <li>
+          <div class="dttext f_l">
+            <ul>
+              <h2><a href="/Article/article/?id={{ a.id }}">{{ a.title }}</a></h2>
+              <p>{{ a.description }}</p>
+              <span>{{ a.date }}</span>
+            </ul>
+          </div>
+          <div class="xwpic f_r"><a href="/"><img src="/static/images/02.jpg"></a></div>
+        </li>
+        {% endfor %}
+      </div>
+      <div class="pagelist">页次：{{ page_obj.number }}/{{ paginator_obj.num_pages }} 每页6条 总数{{ paginator_obj.count }}<a href="/Article/newslistpic/?type={{ t }}">首页</a>
+          {% if page_obj.has_previous %}
+          <a href="/Article/newslistpic/?id={{ page_obj.previous_page_number }}&type={{ t }}">上一页</a>
+          {% endif %}
+         {% if page_obj.has_next %}
+          <a href="/Article/newslistpic/?id={{ page_obj.next_page_number }}&type={{ t }}">下一页</a>
+         {% endif %}
+          <a href="/Article/newslistpic/?id={{ paginator_obj.num_pages }}&type={{ t }}">尾页</a></div>
+    </div>
+  </div>
+  <div class="blank"></div>
+  <!-- container代码 结束 -->
+  
+{% endblock %}
